@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Colton Witt Photography</title>
+
+    <link rel="icon" type="image/gif" href="http://orig14.deviantart.net/71a9/f/2013/040/a/8/camera_pixel_by_blackrabbit_25-d5uf27l.gif" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="
+    <link rel="icon" type="image/gif" href="http://orig14.deviantart.net/71a9/f/2013/040/a/8/camera_pixel_by_blackrabbit_25-d5uf27l.gif">
+
+
+
+
+    <style type="text/css">
+
+    /*Glitch Script*/
+
+
+
+    /*Glitch Script*/
+
+
+
+
+        
+
+         @font-face {
+            font-family: 'Playfair Display';
+            src: url('playfair-display/PlayfairDisplay-Italic.otf');}
+
+
+        body{font-family: sans-serif;}
+
+            a{color:white;
+                text-decoration: none;
+
+                }
+
+            h1{font-size: 36px;
+                color:white;
+                font-family: 'Playfair Display' ;
+                font-style: italic;
+                letter-spacing: 5px;
+                text-align: center;
+                opacity: 0.7;
+                transition-duration: .5s;
+            }
+            h1:hover{
+                opacity: 0;
+            }
+
+
+    </style>
+
+</head>
+
+<body>
+
+ 
+    
+
+    <h1 style="font-weight: normal; position: fixed; bottom: 15px; width:500px; text-align: left"> <a href="About.html">Colton Witt Photography</a></h1>
+   
+
+
+</body>
+
+<canvas id="canvas" width="100%"></canvas>
+
+<script type="text/javascript">
+                var canvas = document.getElementById('canvas')
+              , context = canvas.getContext('2d')
+              , img = new Image()
+              , w
+              , h
+              , offset
+              , glitchInterval;
+            
+            img.src = 'cold.jpg';
+            img.onload = function() {
+              init();
+                window.onresize = init;
+            };
+            
+            var init = function() {
+                clearInterval(glitchInterval);
+                canvas.width = w = window.innerWidth;
+                offset = w * 0;
+                canvas.height = h = ~~(innerHeight, innerWidth);
+                glitchInterval = setInterval(function() {
+                    clear();
+                    context.drawImage(img, 0, 0, img.width,    img.height,  
+                   0, 0, canvas.width, canvas.height);
+                    setTimeout(glitchImg, randInt(250, 1000));
+                }, 500);
+            };
+            
+            var clear = function() {
+                context.rect(0, 0, w, h);
+                context.fillStyle = 'white';
+                context.fill();
+            };
+                
+            var glitchImg = function() {
+                for (var i = 0; i < randInt(1, 13); i++) {
+                    var x = Math.random() * w;
+                    var y = Math.random() * h;
+                    var spliceWidth = w - x;
+                    var spliceHeight = randInt(5, h / 3);
+                    context.drawImage(canvas, 0, y, spliceWidth, spliceHeight, x, y, spliceWidth, spliceHeight);
+                    context.drawImage(canvas, spliceWidth, y, x, spliceHeight, 0, y, x, spliceHeight);
+                }
+            };
+            
+            var randInt = function(a, b) {
+                return ~~(Math.random() * (b - a) + a);
+            };
+
+            // https://codepen.io/Blummed/pen/lCjiu (where I found the beginnign of this)
+</script>
+
+
+</html>
